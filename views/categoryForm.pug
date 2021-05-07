@@ -1,0 +1,8 @@
+extends layout 
+
+block content 
+	h1(class='main-heading') Add New Category
+	form(method='POST', action='/add-category', class='form')
+		input(type='text', placeholder='Name' class='form__input', name='name', required)
+		input(type='text', placeholder='Description', class='form__input', name='description', required)
+		input(type='submit', value='Add Category', class='form__submit')
