@@ -1,11 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const indexController = require('../controllers/indexController');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  const categoryList = ['Games', 'Computers', 'Clothes', 'Phones', 'Food'];
-
-  res.render('index', { title: 'All Products', categoryList: categoryList });
-});
+router.get('/', indexController.getHomePage);
 
 module.exports = router;
