@@ -10,20 +10,10 @@ html
           i(class='sidebar-icon fas fa-warehouse')
           h1(class='sidebar-heading__text') Inventory
         ul(class='sidebar-list')
-          li(class='sidebar-item')
-            a(class='sidebar-link', href='#') All Products
+          each category in categoryList
+            li(class='sidebar-item')
+              a(class='sidebar-link', href=`/category/${category}`)=category 
 
-          li(class='sidebar-item')
-            a(class='sidebar-link', href='#') Games
-
-          li(class='sidebar-item')
-            a(class='sidebar-link', href='#') Computers
-
-          li(class='sidebar-item')
-            a(class='sidebar-link', href='#') Cameras
-
-          li(class='sidebar-item')
-            a(class='sidebar-link', href='#') Clothes
 
         
         ul(class='sidebar-list')
