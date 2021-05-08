@@ -1,4 +1,5 @@
 const Category = require('../models/Category');
+const Product = require('../models/Product');
 
 exports.getHomePage = async (req, res) => {
   const categoryList = await Category.find();
@@ -8,6 +9,19 @@ exports.getHomePage = async (req, res) => {
 exports.getAddProductPage = async (req, res) => {
   const categoryList = await Category.find();
   res.render('productForm', { categoryList });
+};
+
+exports.addProduct = async (req, res) => {
+  const { name, description, price, category } = req.body;
+
+  const newProduct = await Product.create({
+    name,
+    description,
+    price,
+    category,
+  });
+
+  res.redirect('/');
 };
 
 exports.getAddCategoryPage = async (req, res) => {
