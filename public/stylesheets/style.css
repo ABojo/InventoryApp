@@ -87,7 +87,8 @@ body {
   padding: 3rem;
 }
 
-.form-heading {
+.form-heading,
+.category-heading {
   margin-bottom: 4rem;
   font-size: 3rem;
   font-weight: 600;
@@ -124,4 +125,15 @@ body {
 .form__submit:hover {
   background-color: #25a159;
   cursor: pointer;
+}
+
+.category-heading {
+  margin-bottom: 1rem;
+}
+.category-count {
+  font-weight: 300;
+}
+
+.category-description {
+  font-size: 1.5rem;
 }

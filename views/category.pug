@@ -1,0 +1,6 @@
+extends layout
+
+block content
+	h1(class='category-heading')= `${category.name} `
+		span(class='category-count') (0) 
+	p(class='category-description')=category.description

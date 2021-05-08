@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const categoryController = require('../controllers/categoryController');
 
-router.get('/:id', (req, res) => {
-  res.send(`request ${req.params.id} category!`);
-});
+router.get('/:name', categoryController.getCategoryPage);
 
 module.exports = router;
