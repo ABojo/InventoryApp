@@ -5,7 +5,10 @@ exports.getHomePage = async (req, res) => {
   res.render('index', { title: 'All Products', categoryList });
 };
 
-exports.getAddProductPage = (req, res) => {};
+exports.getAddProductPage = async (req, res) => {
+  const categoryList = await Category.find();
+  res.render('productForm', { categoryList });
+};
 
 exports.getAddCategoryPage = async (req, res) => {
   const categoryList = await Category.find();
