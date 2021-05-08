@@ -2,5 +2,11 @@ extends layout
 
 block content
 	h1(class='category-heading')= `${category.name} `
-		span(class='category-count') (0) 
+		span(class='category-count')=`(${products.length})` 
 	p(class='category-description')=category.description
+	div(class='product-grid')
+		each product in products
+			div(class='product-item')
+				h1(class='product-item__name')=product.name
+				p(class='product-item__description')=product.description
+				p(class='product-item__price')=`$${product.price}`
