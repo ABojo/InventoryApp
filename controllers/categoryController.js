@@ -10,11 +10,26 @@ exports.getCategoryPage = async (req, res) => {
   res.render('category', { categoryList, category, products });
 };
 
+exports.getAddProductPage = async (req, res) => {
+  const categoryList = await Category.find();
+  const category = categoryList.find((el) => el.name === req.params.name);
+
+  res.render('productForm', { categoryList, category });
+};
+
 exports.getEditCategoryPage = async (req, res) => {
   const categoryList = await Category.find();
   const category = categoryList.find((el) => el.name === req.params.name);
 
   res.render('editCategoryForm', { categoryList, category });
+};
+
+exports.addProduct = async (req, res) => {
+  const { name, description, price } = req.body;
+  const category = await Category.findOne({ name: req.params.name });
+  await Product.create({ name, description, price, category: category._id });
+
+  res.redirect(category.url);
 };
 
 exports.editCategory = async (req, res) => {

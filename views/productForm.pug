@@ -1,14 +1,22 @@
 extends layout 
 
-block content 
-	h1(class='form-heading') Add New Product
-	form(method='POST', action='/add-product', class='form', id='form')
-		select(form='form', name='category')
-			option(value='', disabled, selected) Select a category
-			each category in categoryList
-				option(value=category._id)= category.name
+block content
+	if category
+		h1(class='form-heading')=`Add Product To ${category.name}`
+		form(method='POST', action=`/category/${category.name}/add`, class='form', id='form')
+			input(type='text', placeholder='Name' class='form__input', name='name', required)
+			input(type='text', placeholder='Description', class='form__input', name='description', required)
+			input(type='number', placeholder='Price', class='form__input', name='price', required)
+			input(type='submit', value='Add Product', class='form__submit')
+	else
+		h1(class='form-heading') Add New Product
+		form(method='POST', action='/add-product', class='form', id='form')
+			select(form='form', name='category')
+				option(value='', disabled, selected) Select a category
+				each category in categoryList
+					option(value=category._id)= category.name
 
-		input(type='text', placeholder='Name' class='form__input', name='name', required)
-		input(type='text', placeholder='Description', class='form__input', name='description', required)
-		input(type='number', placeholder='Price', class='form__input', name='price', required)
-		input(type='submit', value='Add Product', class='form__submit')
+			input(type='text', placeholder='Name' class='form__input', name='name', required)
+			input(type='text', placeholder='Description', class='form__input', name='description', required)
+			input(type='number', placeholder='Price', class='form__input', name='price', required)
+			input(type='submit', value='Add Product', class='form__submit')
