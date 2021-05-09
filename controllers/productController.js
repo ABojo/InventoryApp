@@ -13,5 +13,11 @@ exports.editProduct = async (req, res) => {
 
   const product = Product.findById(req.params.id);
   await product.update({ name: name, description: description, price: price });
+
+  res.redirect('/');
+};
+
+exports.deleteProduct = async (req, res) => {
+  await Product.findByIdAndRemove(req.params.id);
   res.redirect('/');
 };
