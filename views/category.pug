@@ -1,9 +1,18 @@
 extends layout
 
 block content
-	h1(class='category-heading')= `${category.name} `
-		span(class='category-count')=`(${products.length})` 
+	div(class='category-heading-box')
+		h1(class='category-heading')= `${category.name} `
+			span(class='category-count')=`(${products.length})`
+		if category._id
+			a(class='btn btn-category', href=`${category.url}/edit`) Edit
+			a(class='btn btn-category', href=`${category.url}/delete`) Delete 
+
 	p(class='category-description')=category.description
+	
+
+
+
 	div(class='product-grid')
 		each product in products
 			div(class='product-item')

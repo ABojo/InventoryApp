@@ -9,3 +9,10 @@ exports.getCategoryPage = async (req, res) => {
 
   res.render('category', { categoryList, category, products });
 };
+
+exports.getEditCategoryPage = async (req, res) => {
+  const categoryList = await Category.find();
+  const category = categoryList.find((el) => el.name === req.params.name);
+
+  res.render('editCategoryForm', { categoryList, category });
+};

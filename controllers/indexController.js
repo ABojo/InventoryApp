@@ -6,7 +6,7 @@ exports.getHomePage = async (req, res) => {
   const products = await Product.find();
   const category = {
     name: 'All Products',
-    description: 'A list of all products on the site',
+    description: 'All products from all categories',
   };
 
   res.render('category', { categoryList, products, category });
