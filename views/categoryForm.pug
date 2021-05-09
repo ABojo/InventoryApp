@@ -1,7 +1,7 @@
 extends layout 
 
 block content 
-	h1(class='form-heading') Add New Category
+	h1(class='form-heading') Add new category
 	form(method='POST', action='/add-category', class='form')
 		input(type='text', placeholder='Name' class='form__input', name='name', required)
 		input(type='text', placeholder='Description', class='form__input', name='description', required)

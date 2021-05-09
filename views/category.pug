@@ -5,9 +5,9 @@ block content
 		h1(class='category-heading')= `${category.name} `
 			span(class='category-count')=`(${products.length})`
 		if category._id
-			a(class='btn btn-category', href=`${category.url}/add`) Add
-			a(class='btn btn-category', href=`${category.url}/edit`) Edit
-			a(class='btn btn-category', href=`${category.url}/delete`) Delete 
+			a(class='btn btn-add', href=`${category.url}/add`) Add
+			a(class='btn btn-edit', href=`${category.url}/edit`) Edit
+			a(class='btn btn-delete', href=`${category.url}/delete`) Delete 
 
 	p(class='category-description')=category.description
 	
