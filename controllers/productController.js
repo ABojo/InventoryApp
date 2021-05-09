@@ -11,7 +11,7 @@ exports.getEditPage = async (req, res) => {
 exports.editProduct = async (req, res) => {
   const { name, description, price } = req.body;
 
-  const product = Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id);
   await product.update({ name: name, description: description, price: price });
 
   res.redirect('/');

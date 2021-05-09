@@ -16,3 +16,18 @@ exports.getEditCategoryPage = async (req, res) => {
 
   res.render('editCategoryForm', { categoryList, category });
 };
+
+exports.editCategory = async (req, res) => {
+  const { name, description } = req.body;
+  const updatedCategory = await Category.findOneAndUpdate(
+    { name: req.params.name },
+    { name, description },
+    { new: true, useFindAndModify: false }
+  );
+  res.redirect(updatedCategory.url);
+};
+
+exports.deleteCategory = async (req, res) => {
+  await Category.findOneAndRemove({ name: req.params.name });
+  res.redirect('/');
+};
