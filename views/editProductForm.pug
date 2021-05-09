@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+	h1(class='form-heading')=`Edit ${product.name}`
+	form(method='POST', action=`/product/${product.id}/edit`, class='form', id='form')
+		input(type='text', placeholder='Name' class='form__input', name='name', value=`${product.name}`, required)
+		input(type='text', placeholder='Description', class='form__input', name='description', value=`${product.description}`, required)
+		input(type='number', placeholder='Price', class='form__input', name='price', value=`${product.price}`, required)
+		input(type='submit', value='Edit Product', class='form__submit')
