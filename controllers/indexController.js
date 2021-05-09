@@ -3,7 +3,13 @@ const Product = require('../models/Product');
 
 exports.getHomePage = async (req, res) => {
   const categoryList = await Category.find();
-  res.render('index', { title: 'All Products', categoryList });
+  const products = await Product.find();
+  const category = {
+    name: 'All Products',
+    description: 'A list of all products on the site',
+  };
+
+  res.render('category', { categoryList, products, category });
 };
 
 exports.getAddProductPage = async (req, res) => {
