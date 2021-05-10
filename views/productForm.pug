@@ -3,7 +3,7 @@ extends layout
 block content
 	if category
 		h1(class='form-heading')=`Add product to ${category.name}`
-		form(method='POST', action=`/category/${category.name}/add`, class='form', id='form')
+		form(method='POST', action=`/category/${category.nameLower}/add`, class='form', id='form')
 			input(type='text', placeholder='Name' class='form__input', name='name', required)
 			input(type='text', placeholder='Description', class='form__input', name='description', required)
 			input(type='number', placeholder='Price', class='form__input', name='price', required)

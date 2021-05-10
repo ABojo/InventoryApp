@@ -19,14 +19,14 @@ exports.getAddProductPage = async (req, res) => {
 
 exports.getEditCategoryPage = async (req, res) => {
   const categoryList = await Category.find();
-  const category = categoryList.find((el) => el.name === req.params.name);
+  const category = categoryList.find((el) => el.nameLower === req.params.name);
 
   res.render('editCategoryForm', { categoryList, category });
 };
 
 exports.addProduct = async (req, res) => {
   const { name, description, price } = req.body;
-  const category = await Category.findOne({ name: req.params.name });
+  const category = await Category.findOne({ nameLower: req.params.name });
   await Product.create({ name, description, price, category: category._id });
 
   res.redirect(category.url);
@@ -34,9 +34,10 @@ exports.addProduct = async (req, res) => {
 
 exports.editCategory = async (req, res) => {
   const { name, description } = req.body;
+  console.log(req.params.name);
   const updatedCategory = await Category.findOneAndUpdate(
-    { name: req.params.name },
-    { name, description },
+    { nameLower: req.params.name },
+    { name, nameLower: name.toLowerCase(), description },
     { new: true, useFindAndModify: false }
   );
   res.redirect(updatedCategory.url);
