@@ -43,6 +43,6 @@ exports.editCategory = async (req, res) => {
 };
 
 exports.deleteCategory = async (req, res) => {
-  await Category.findOneAndRemove({ name: req.params.name });
+  await Category.findOneAndRemove({ nameLower: req.params.name });
   res.redirect('/');
 };

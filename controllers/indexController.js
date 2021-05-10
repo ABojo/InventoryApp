@@ -38,6 +38,10 @@ exports.getAddCategoryPage = async (req, res) => {
 
 exports.addCategory = async (req, res) => {
   const { name, description } = req.body;
-  const newCategory = await Category.create({ name, description });
+  const newCategory = await Category.create({
+    name,
+    nameLower: name.toLowerCase(),
+    description,
+  });
   res.redirect(newCategory.url);
 };
