@@ -5,7 +5,11 @@ const categorySchema = new mongoose.Schema({
 });
 
 categorySchema.virtual('url').get(function () {
-  return `/category/${this.name}`;
+  return `/category/${this.name}`.toLowerCase();
+});
+
+categorySchema.virtual('nameLower').get(function () {
+  return this.name.toLowerCase();
 });
 
 const categoryModel = mongoose.model('Category', categorySchema);
