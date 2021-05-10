@@ -20,6 +20,7 @@ block content
 				div(class='product-title-box')
 					h1(class='product-item__name')=product.name
 					h1(class='product-item__price')=`$${product.price}`
+					h1(class='product-item__price')=`${product.stock} in stock`
 				p(class='product-item__description')=product.description
 				a(class='btn btn-edit', href=`/product/${product.id}/edit`) Edit
 				button(class='btn btn-delete', data-url=`/product/${product.id}/delete`, data-name=`${product.name}`) Delete
