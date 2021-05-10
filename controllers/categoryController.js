@@ -25,9 +25,15 @@ exports.getEditCategoryPage = async (req, res) => {
 };
 
 exports.addProduct = async (req, res) => {
-  const { name, description, price } = req.body;
+  const { name, description, price, stock } = req.body;
   const category = await Category.findOne({ nameLower: req.params.name });
-  await Product.create({ name, description, price, category: category._id });
+  await Product.create({
+    name,
+    description,
+    price,
+    stock,
+    category: category._id,
+  });
 
   res.redirect(category.url);
 };

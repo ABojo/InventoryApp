@@ -18,7 +18,7 @@ exports.getAddProductPage = async (req, res) => {
 };
 
 exports.addProduct = async (req, res) => {
-  const { name, description, price, category } = req.body;
+  const { name, description, price, category, stock } = req.body;
   const selectedCategory = await Category.findById(category);
 
   const newProduct = await Product.create({
@@ -26,6 +26,7 @@ exports.addProduct = async (req, res) => {
     description,
     price,
     category,
+    stock,
   });
 
   res.redirect(selectedCategory.url);
