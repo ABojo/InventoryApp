@@ -18,6 +18,9 @@ exports.editProduct = async (req, res) => {
 };
 
 exports.deleteProduct = async (req, res) => {
-  await Product.findByIdAndRemove(req.params.id);
-  res.redirect('/');
+  const product = await Product.findById(req.params.id);
+  const category = await Category.findById(product.category);
+  product.remove();
+
+  res.redirect(category.url);
 };
