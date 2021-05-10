@@ -9,12 +9,19 @@ exports.getEditPage = async (req, res) => {
 };
 
 exports.editProduct = async (req, res) => {
-  const { name, description, price } = req.body;
+  const { name, description, price, stock } = req.body;
 
   const product = await Product.findById(req.params.id);
-  await product.update({ name: name, description: description, price: price });
+  const category = await Category.findById(product.category);
 
-  res.redirect('/');
+  await product.update({
+    name: name,
+    description: description,
+    price: price,
+    stock: stock,
+  });
+
+  res.redirect(category.url);
 };
 
 exports.deleteProduct = async (req, res) => {
