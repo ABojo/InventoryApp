@@ -12,7 +12,11 @@ const productSchema = new mongoose.Schema({
   },
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
   price: { type: Number, required: [true, 'You must specify a price!'] },
-  stock: { type: Number, required: [true, 'You must specify a stock!'] },
+  stock: {
+    type: Number,
+    min: [0, 'You must enter a number greater than or equal to zero!'],
+    required: [true, 'You must specify a stock!'],
+  },
 });
 
 productSchema.virtual('url').get(function () {
