@@ -201,6 +201,11 @@ body {
   transition: all 0.2s;
 }
 
+.btn:hover,
+.popup-btn:hover {
+  cursor: pointer;
+}
+
 .btn-add {
   background-color: #2ecc71;
   margin-right: 1rem;
@@ -215,7 +220,8 @@ body {
   background-color: #e74c3c;
 }
 
-.btn-add:hover {
+.btn-add:hover,
+.popup-btn.confirm:hover {
   background-color: #25a159;
 }
 
@@ -223,6 +229,52 @@ body {
   background-color: #b6833b;
 }
 
-.btn-delete:hover {
+.btn-delete:hover,
+.popup-btn.reject:hover {
   background-color: #923227;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.8);
+}
+.popup-box {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  padding: 3rem;
+  text-align: center;
+}
+
+.popup-message {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.popup-btn {
+  padding: 1rem;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  font-size: 1.7rem;
+  text-decoration: none;
+}
+
+.popup-btn.confirm {
+  background-color: #2ecc71;
+  margin-right: 1rem;
+}
+
+.popup-btn.reject {
+  background-color: #e74c3c;
 }
