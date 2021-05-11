@@ -1,26 +1,27 @@
 extends layout
 
 block content
-	div(class='category-heading-box')
-		h1(class='category-heading')= `${category.name} `
-			span(class='category-count')=`(${products.length})`
-		if category._id
-			a(class='btn btn-add', href=`${category.url}/add`) Add
-			a(class='btn btn-edit', href=`${category.url}/edit`) Edit
-			button(class='btn btn-delete', data-url=`${category.url}/delete`, data-name=`${category.name}`) Delete 
+	div(class='category-container')
+		div(class='category-heading-box')
+			h1(class='category-heading')= `${category.name} `
+				span(class='category-count')=`(${products.length})`
+			if category._id
+				a(class='btn btn-add', href=`${category.url}/add`) Add
+				a(class='btn btn-edit', href=`${category.url}/edit`) Edit
+				button(class='btn btn-delete', data-url=`${category.url}/delete`, data-name=`${category.name}`) Delete 
 
-	p(class='category-description')=category.description
-	
+		p(class='category-description')=category.description
+		
 
 
 
-	div(class='product-grid')
-		each product in products
-			div(class='product-item')
-				div(class='product-title-box')
-					h1(class='product-item__name')=product.name
-					h1(class='product-item__price')=`$${product.price}`
-					h1(class='product-item__price')=`${product.stock} in stock`
-				p(class='product-item__description')=product.description
-				a(class='btn btn-edit', href=`/product/${product.id}/edit`) Edit
-				button(class='btn btn-delete', data-url=`/product/${product.id}/delete`, data-name=`${product.name}`) Delete
+		div(class='product-grid')
+			each product in products
+				div(class='product-item')
+					div(class='product-title-box')
+						h1(class='product-item__name')=product.name
+						h1(class='product-item__price')=`$${product.price}`
+						h1(class='product-item__price')=`${product.stock} in stock`
+					p(class='product-item__description')=product.description
+					a(class='btn btn-edit', href=`/product/${product.id}/edit`) Edit
+					button(class='btn btn-delete', data-url=`/product/${product.id}/delete`, data-name=`${product.name}`) Delete

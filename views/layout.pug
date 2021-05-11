@@ -6,31 +6,31 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/index.js', defer)
   body
-  
-    div(class='container-grid')
-      div(class='sidebar')
-        div(class='sidebar-heading') 
-          i(class='sidebar-icon fas fa-warehouse')
-          h1(class='sidebar-heading__text') Inventory
-        ul(class='sidebar-list')
-          li(class='sidebar-item')
-            a(class='sidebar-link', href=`/`) All Products 
-          each category in categoryList
+    div(class='root-container')
+      div(class='container-grid')
+        div(class='sidebar')
+          div(class='sidebar-heading') 
+            i(class='sidebar-icon fas fa-warehouse')
+            h1(class='sidebar-heading__text') Inventory
+          ul(class='sidebar-list')
             li(class='sidebar-item')
-              a(class='sidebar-link', href=`${category.url}`)=category.name 
+              a(class='sidebar-link', href=`/`) All Products 
+            each category in categoryList
+              li(class='sidebar-item')
+                a(class='sidebar-link', href=`${category.url}`)=category.name 
 
 
-        
-        ul(class='sidebar-list')
-          li(class='sidebar-item')
-            i(class='sidebar-icon fas fa-plus-circle')
-            a(class='sidebar-link add', href='/add-category') Add Category
+          
+          ul(class='sidebar-list')
+            li(class='sidebar-item')
+              i(class='sidebar-icon fas fa-plus-circle')
+              a(class='sidebar-link add', href='/add-category') Add Category
 
-          li(class='sidebar-item')
-            i(class='sidebar-icon fas fa-plus-circle')
-            a(class='sidebar-link add', href='/add-product') Add Product
+            li(class='sidebar-item')
+              i(class='sidebar-icon fas fa-plus-circle')
+              a(class='sidebar-link add', href='/add-product') Add Product
 
 
 
-      div(class='main')
-        block content
+        div(class='main')
+          block content
