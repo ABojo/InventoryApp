@@ -12,7 +12,7 @@ block content
 	else
 		h1(class='form-heading') Add new product
 		form(method='POST', action='/add-product', class='form', id='form')
-			select(form='form', name='category')
+			select(form='form', name='category', required)
 				option(value='', disabled, selected) Select a category
 				each category in categoryList
 					option(value=category._id)= category.name
