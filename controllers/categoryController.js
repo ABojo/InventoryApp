@@ -50,6 +50,10 @@ exports.editCategory = async (req, res) => {
 };
 
 exports.deleteCategory = async (req, res) => {
-  await Category.findOneAndRemove({ nameLower: req.params.name });
+  const category = await Category.findOne({ nameLower: req.params.name });
+  const products = await Product.find({ category: category._id });
+  const promises = products.map((product) => product.remove());
+  await Promise.all([promises, category.remove()]);
+
   res.redirect('/');
 };
